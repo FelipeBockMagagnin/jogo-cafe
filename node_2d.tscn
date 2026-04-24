@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dl567njklfdxm"]
+
+[ext_resource type="Texture2D" uid="uid://dsvi2ydeb0k8j" path="res://icon.svg" id="2_epypp"]
+[ext_resource type="PackedScene" uid="uid://b0biv6o8xjl1u" path="res://addons/bluebrains_character_controller/character_controller/example_character_controller.tscn" id="3_epypp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(272.75, 60.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
+size = Vector2(272.75, 60.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
+size = Vector2(273.58777, 61.372925)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(272.75, 60.5)
+
+[node name="Node2D" type="Node2D" unique_id=644670990]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1280649412]
+position = Vector2(6451, 6662.9995)
+scale = Vector2(110.92408, -824.5235)
+texture = ExtResource("2_epypp")
+
+[node name="PlayerCharacter" parent="." unique_id=231067767 instance=ExtResource("3_epypp")]
+position = Vector2(636, 363)
+collision_mask = 15
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=97626488]
+position = Vector2(725, 407)
+zoom = Vector2(2, 2)
+limit_enabled = false
+
+[node name="snap_point" type="StaticBody2D" parent="." unique_id=1374902420]
+position = Vector2(496.00003, 408)
+scale = Vector2(-49.89933, -0.0029308486)
+collision_layer = 3
+collision_mask = 23
+
+[node name="Polygon2D" type="Polygon2D" parent="snap_point" unique_id=678340147]
+position = Vector2(-0.08379364, -9.46875)
+rotation = -3.1415124
+scale = Vector2(0.000914821, 9.114044)
+skew = -8.034706e-05
+polygon = PackedVector2Array(-500, -32, 500, -32, 500, 32, -500, 32)
+uv = PackedVector2Array(-500, -32, 500, -32, 500, 32, -500, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="snap_point" unique_id=925910564]
+position = Vector2(-0.122032166, 9.472656)
+rotation = -3.1415124
+scale = Vector2(0.003351605, 9.470822)
+skew = -8.034706e-05
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="Ground3" type="StaticBody2D" parent="." unique_id=866354428]
+position = Vector2(968, 326)
+scale = Vector2(0.45051172, 4.8915133)
+collision_layer = 3
+collision_mask = 23
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground3" unique_id=1618480605]
+position = Vector2(25, 0.99999976)
+scale = Vector2(0.2729501, 0.9623288)
+polygon = PackedVector2Array(-500, -32, 500, -32, 500, 32, -500, 32)
+uv = PackedVector2Array(-500, -32, 500, -32, 500, 32, -500, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3" unique_id=909885394]
+position = Vector2(24.625, -1)
+shape = SubResource("RectangleShape2D_wtcfe")
+
+[node name="Ground2" type="StaticBody2D" parent="." unique_id=1596243817]
+position = Vector2(1153, 438)
+scale = Vector2(1.0013994, 4.6170783)
+collision_layer = 3
+collision_mask = 23
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground2" unique_id=585170587]
+position = Vector2(-311.00003, 1.9999998)
+scale = Vector2(0.323703, 0.9495545)
+polygon = PackedVector2Array(-500, -32, 500, -32, 500, 32, -500, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2" unique_id=502321785]
+position = Vector2(-336.54364, 2.3135376)
+scale = Vector2(0.9999998, 1)
+shape = SubResource("RectangleShape2D_d21ai")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=446173512]
+position = Vector2(572, 487)
+collision_layer = 2
+collision_mask = 23
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=1526139403]
+position = Vector2(25, 0.99999976)
+scale = Vector2(0.2729501, 0.9623288)
+polygon = PackedVector2Array(-500, -32, 500, -32, 500, 32, -500, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=269112410]
+position = Vector2(24.625, -1)
+shape = SubResource("RectangleShape2D_0e48y")
