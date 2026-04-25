@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://vie2pd3qfb5e" path="res://addons/bluebrains_character_controller/character_controller/2d_character_controller_base.tscn" id="1_kvvxd"]
 [ext_resource type="SpriteFrames" uid="uid://c3ixhnu256fxs" path="res://addons/bluebrains_character_controller/sprites/sprite_frames.tres" id="2_318wk"]
-[ext_resource type="Script" uid="uid://cyfd53fuwelk5" path="res://addons/bluebrains_character_controller/components/ledge_detector.gd" id="3_gaeln"]
 [ext_resource type="Script" uid="uid://cwdjqvddxjqqg" path="res://addons/bluebrains_character_controller/character_controller/state_machine/states/grounded.gd" id="4_gaeln"]
 [ext_resource type="Script" uid="uid://ke7ebekdcqfn" path="res://addons/bluebrains_character_controller/character_controller/state_machine/input_transition.gd" id="5_arnfg"]
 [ext_resource type="Script" uid="uid://cyspnbaj7tun" path="res://addons/bluebrains_character_controller/character_controller/state_machine/magic_transition.gd" id="6_ydkvs"]
@@ -14,7 +13,7 @@
 [ext_resource type="Script" uid="uid://byfliumen4dwv" path="res://addons/bluebrains_character_controller/character_controller/state_machine/states/wall_slide.gd" id="12_no1fn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnp58"]
-size = Vector2(12, 32)
+size = Vector2(12, 28)
 
 [sub_resource type="Resource" id="Resource_yo6go"]
 script = ExtResource("7_i63l1")
@@ -51,6 +50,7 @@ collision_layer = 0
 character_size = Vector2(12, 32)
 
 [node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_vnp58")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
@@ -60,11 +60,9 @@ animation = &"ledge_hang"
 
 [node name="LedgeDetectorR" parent="." index="2"]
 position = Vector2(6, -18)
-script = ExtResource("3_gaeln")
 
 [node name="LedgeDetectorL" parent="." index="3"]
 position = Vector2(-6, -18)
-script = ExtResource("3_gaeln")
 
 [node name="MovementVariables" parent="." index="6"]
 wall_slide_speed = 50.0
