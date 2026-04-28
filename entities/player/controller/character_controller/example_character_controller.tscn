@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b0biv6o8xjl1u"]
 
 [ext_resource type="PackedScene" uid="uid://vie2pd3qfb5e" path="res://entities/player/controller/character_controller/2d_character_controller_base.tscn" id="1_kvvxd"]
-[ext_resource type="SpriteFrames" uid="uid://c3ixhnu256fxs" path="res://entities/player/controller/sprites/sprite_frames.tres" id="2_318wk"]
 [ext_resource type="Script" uid="uid://cwdjqvddxjqqg" path="res://entities/player/controller/character_controller/state_machine/states/grounded.gd" id="4_gaeln"]
 [ext_resource type="Script" uid="uid://ke7ebekdcqfn" path="res://entities/player/controller/character_controller/state_machine/input_transition.gd" id="5_arnfg"]
 [ext_resource type="Script" uid="uid://cyspnbaj7tun" path="res://entities/player/controller/character_controller/state_machine/magic_transition.gd" id="6_ydkvs"]
@@ -13,7 +12,7 @@
 [ext_resource type="Script" uid="uid://byfliumen4dwv" path="res://entities/player/controller/character_controller/state_machine/states/wall_slide.gd" id="12_no1fn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnp58"]
-size = Vector2(12, 28)
+size = Vector2(15, 27)
 
 [sub_resource type="Resource" id="Resource_yo6go"]
 script = ExtResource("7_i63l1")
@@ -49,29 +48,30 @@ metadata/_custom_type_script = "uid://bdlrly1hkn1qa"
 collision_layer = 0
 character_size = Vector2(12, 32)
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 2)
+[node name="CollisionShape2D" parent="." index="0" unique_id=1302680569]
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_vnp58")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=1250438481]
 unique_name_in_owner = true
-sprite_frames = ExtResource("2_318wk")
-animation = &"ledge_hang"
+position = Vector2(2, -0.25)
+scale = Vector2(1, 1.0185186)
+animation = &"idle"
 
-[node name="LedgeDetectorR" parent="." index="2"]
+[node name="LedgeDetectorR" parent="." index="2" unique_id=544419312]
 position = Vector2(6, -18)
 
-[node name="LedgeDetectorL" parent="." index="3"]
+[node name="LedgeDetectorL" parent="." index="3" unique_id=1869959984]
 position = Vector2(-6, -18)
 
-[node name="BehaviourVariables" parent="." index="5"]
+[node name="BehaviourVariables" parent="." index="5" unique_id=1774118901]
 num_airdashes = 2
 
-[node name="MovementVariables" parent="." index="6"]
+[node name="MovementVariables" parent="." index="6" unique_id=576785720]
 wall_slide_speed = 50.0
 time_to_wall_slide_speed = 2.0
 
-[node name="StateMachine" parent="." index="7" node_paths=PackedStringArray("default_state")]
+[node name="StateMachine" parent="." index="7" unique_id=1434573683 node_paths=PackedStringArray("default_state")]
 default_state = NodePath("Airborne")
 
 [node name="Grounded" type="Node" parent="StateMachine" index="0" unique_id=2085955754 node_paths=PackedStringArray("input_map", "variables", "turnaround_state", "animated_sprite")]
