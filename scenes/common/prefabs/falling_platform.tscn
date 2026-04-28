@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cn6el2hx4u06k"]
+
+[ext_resource type="Texture2D" uid="uid://cy8blwarhip4" path="res://placeholders/06-Pig Hide in the Box/Ground (26x20).png" id="1_x674r"]
+[ext_resource type="Script" uid="uid://be5rsa1ykjjyv" path="res://scenes/common/scripts/falling_platform.gd" id="2_u7k82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qpwx"]
+size = Vector2(23, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6hfb"]
+size = Vector2(23, 2.5)
+
+[node name="FallingPlatform" type="Sprite2D" unique_id=2050301797]
+texture_filter = 1
+texture = ExtResource("1_x674r")
+script = ExtResource("2_u7k82")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=616303989]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1702644775]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_5qpwx")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1167380205]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1027270146]
+position = Vector2(0.5, -3)
+shape = SubResource("RectangleShape2D_e6hfb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
