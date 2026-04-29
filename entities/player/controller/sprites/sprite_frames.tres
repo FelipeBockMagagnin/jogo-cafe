@@ -383,6 +383,14 @@ region = Rect2(192, 0, 48, 48)
 atlas = ExtResource("7_7f8r1")
 region = Rect2(288, 0, 32, 27)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyaya"]
+atlas = ExtResource("7_7f8r1")
+region = Rect2(288, 0, 32, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du05t"]
+atlas = ExtResource("7_7f8r1")
+region = Rect2(286, 0, 32, 27)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xv8v0"]
 atlas = ExtResource("17_pjkpb")
 region = Rect2(0, 0, 48, 48)
@@ -1214,6 +1222,12 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hgkgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyaya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du05t")
 }],
 "loop": true,
 "name": &"ledge_hang",

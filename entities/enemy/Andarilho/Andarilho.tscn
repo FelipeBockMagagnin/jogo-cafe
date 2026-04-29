@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://2amf8b3x273p"]
+
+[ext_resource type="Script" uid="uid://beulbc3ydraf2" path="res://entities/enemy/Andarilho/AndarilhoMovement.gd" id="1_21tkh"]
+[ext_resource type="SpriteFrames" uid="uid://pyd87naorgxa" path="res://entities/enemy/Andarilho/Andarilho.tres" id="2_21tkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tv4a"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flvtn"]
+size = Vector2(21, 22)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=831893385]
+script = ExtResource("1_21tkh")
+speed = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1455535977]
+texture_filter = 1
+position = Vector2(-13, -10)
+sprite_frames = ExtResource("2_21tkh")
+autoplay = "default"
+frame_progress = 0.8848371
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=304561079]
+position = Vector2(-6, 4)
+shape = SubResource("RectangleShape2D_1tv4a")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=926459118]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1092832045]
+position = Vector2(-9, -5)
+shape = SubResource("RectangleShape2D_flvtn")
+
+[node name="LeftRay" type="RayCast2D" parent="." unique_id=43488244]
+position = Vector2(-21, 2)
+target_position = Vector2(0, 8)
+hit_from_inside = true
+
+[node name="RightRay" type="RayCast2D" parent="." unique_id=308193163]
+position = Vector2(3, 2)
+target_position = Vector2(0, 8)
+hit_from_inside = true
+
+[node name="LeftWallRay" type="RayCast2D" parent="." unique_id=1731526932]
+position = Vector2(-19, -4)
+target_position = Vector2(-2, 0)
+
+[node name="RightWallRay" type="RayCast2D" parent="." unique_id=800623879]
+position = Vector2(0, -4)
+target_position = Vector2(2, 0)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
