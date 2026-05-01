@@ -11,6 +11,12 @@ class_name PlayerCharacterBody2D
 @export_group("Control Variables")
 @export var looking_left := false
 
+func _on_ready() -> void:
+	add_to_group("Player")
+	
+	if GlobalScript.checkpoint_pos != Vector2(-999, -999):
+		global_position = GlobalScript.checkpoint_pos
+	
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 

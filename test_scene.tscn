@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dl567njklfdxm"]
 
-[ext_resource type="PackedScene" uid="uid://b0biv6o8xjl1u" path="res://entities/player/controller/character_controller/example_character_controller.tscn" id="1_2nij2"]
+[ext_resource type="PackedScene" uid="uid://b0biv6o8xjl1u" path="res://entities/player/Prefab/Player.tscn" id="1_2nij2"]
 [ext_resource type="Texture2D" uid="uid://elmpbkrl6oem" path="res://placeholders/14-TileSets/Terrain (32x32).png" id="2_7cbxl"]
 [ext_resource type="Script" uid="uid://c6rt6euosdvj" path="res://scenes/common/cameraregion2d/CameraRegionController2D.gd" id="3_8pr8v"]
 [ext_resource type="Script" uid="uid://u83fwyh8qydi" path="res://scenes/common/cameraregion2d/CameraRegion2D.gd" id="4_buypi"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cn6el2hx4u06k" path="res://scenes/common/prefabs/falling_platform.tscn" id="6_7cbxl"]
 [ext_resource type="PackedScene" uid="uid://2amf8b3x273p" path="res://entities/enemy/Andarilho/Andarilho.tscn" id="7_8pr8v"]
 [ext_resource type="PackedScene" uid="uid://xb24idkhbeey" path="res://scenes/common/prefabs/KillZone.tscn" id="8_buypi"]
+[ext_resource type="PackedScene" uid="uid://khosta3xrpbk" path="res://scenes/common/prefabs/check_point.tscn" id="9_njel3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q6r6c"]
 resource_name = "Placeholder"
@@ -467,7 +468,7 @@ size = Vector2(1344, 78)
 [node name="Node2D" type="Node2D" unique_id=644670990]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=97626488]
-position = Vector2(263, 371)
+position = Vector2(1395, 175)
 limit_enabled = false
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -477,7 +478,7 @@ drag_right_margin = 0.0
 
 [node name="Player" parent="." unique_id=231067767 instance=ExtResource("1_2nij2")]
 texture_filter = 1
-position = Vector2(108, 311)
+position = Vector2(1167, 293)
 collision_layer = 15
 collision_mask = 15
 
@@ -533,9 +534,21 @@ position = Vector2(728, 402)
 [node name="Andarilho3" parent="." unique_id=1684646007 instance=ExtResource("7_8pr8v")]
 position = Vector2(563, 463)
 
+[node name="Andarilho4" parent="." unique_id=276590893 instance=ExtResource("7_8pr8v")]
+position = Vector2(206, 375)
+
 [node name="KillZone" parent="." unique_id=943946058 instance=ExtResource("8_buypi")]
 position = Vector2(1361, 445)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=796225539]
-position = Vector2(423, 134)
+position = Vector2(527, 68)
 shape = SubResource("RectangleShape2D_njel3")
+
+[node name="CheckPoint" parent="." unique_id=956832579 instance=ExtResource("9_njel3")]
+position = Vector2(1257, 305)
+
+[node name="CheckPoint2" parent="." unique_id=1816945143 instance=ExtResource("9_njel3")]
+position = Vector2(1541, 222)
+
+[node name="CheckPoint3" parent="." unique_id=671406408 instance=ExtResource("9_njel3")]
+position = Vector2(1265, 61)

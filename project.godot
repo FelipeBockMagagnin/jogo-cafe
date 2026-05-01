@@ -14,13 +14,17 @@ config/name="jogo-cafe"
 run/main_scene="uid://dl567njklfdxm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
+[autoload]
+
+GlobalScript="*uid://bn55ictebwuxv"
+
 [display]
 
-window/size/viewport_width=600
-window/size/viewport_height=400
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/mode=2
-window/size/initial_position_type=3
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [input]
 
