@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://khosta3xrpbk"]
+
+[ext_resource type="Texture2D" uid="uid://c30urunx8tmro" path="res://placeholders/13-Dialogue Boxes/Loser Out (24x8).png" id="1_rxktq"]
+[ext_resource type="Script" uid="uid://diydpp6g5wmfi" path="res://check_point.gd" id="2_fudpq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcap6"]
+size = Vector2(30, 16)
+
+[node name="CheckPoint" type="Sprite2D" unique_id=956832579]
+texture = ExtResource("1_rxktq")
+hframes = 2
+script = ExtResource("2_fudpq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2106517659]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1812562427]
+shape = SubResource("RectangleShape2D_wcap6")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1584913291]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

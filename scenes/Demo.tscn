@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c7j2ovnh0sd3d"]
+
+[ext_resource type="Texture2D" uid="uid://dacyc4ffkwtac" path="res://assets/sprites/bg.png" id="1_xwrrd"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="2_o3s4h"]
+[ext_resource type="TileSet" path="res://assets/sprites/wall.tres" id="3_c04u1"]
+[ext_resource type="Script" uid="uid://che67cnl3qeys" path="res://assets/scripts/ShakeCamera2D.gd" id="4_hh6aw"]
+[ext_resource type="AudioStream" uid="uid://0c70y077fnjk" path="res://assets/sfx/sountrack.wav" id="5_k740c"]
+
+[sub_resource type="Curve" id="1"]
+_limits = [-40.0, 40.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 239.273, 0, 0, Vector2(0.0820669, -26.9091), -90.5356, -90.5356, 0, 0, Vector2(0.173252, 10.1818), 200.989, 200.989, 0, 0, Vector2(0.300912, -18.1818), -159.515, -159.515, 0, 0, Vector2(0.398176, 25.4545), -920.28, -920.28, 0, 0, Vector2(0.495441, -22.5455), -219.333, -219.333, 0, 0, Vector2(0.613982, 7.27273), -239.273, -239.273, 0, 0, Vector2(0.711246, 18.1818), 513.993, 513.993, 0, 0, Vector2(0.829787, -24), 97.0024, 97.0024, 0, 0, Vector2(0.884498, 10.9091), -139.576, -139.576, 0, 0, Vector2(0.948328, -6.54545), 364.111, 364.111, 0, 0, Vector2(1, 1), -277.727, 0.0, 0, 0]
+point_count = 12
+
+[sub_resource type="CurveTexture" id="2"]
+curve = SubResource("1")
+
+[sub_resource type="ParticleProcessMaterial" id="3"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector3(-100, 0, 0)
+tangential_accel_curve = SubResource("2")
+scale_min = 0.0
+scale_max = 0.0
+
+[node name="Demo" type="Node2D" unique_id=2094382797]
+
+[node name="bg" type="Sprite2D" parent="." unique_id=23085175]
+z_index = -50
+position = Vector2(512, 300)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_xwrrd")
+
+[node name="player" parent="." unique_id=290826872 instance=ExtResource("2_o3s4h")]
+position = Vector2(273.413, 444.166)
+scale = Vector2(1.2, 1.2)
+
+[node name="TileMap" type="TileMap" parent="." unique_id=2069294516]
+z_index = 2
+tile_set = ExtResource("3_c04u1")
+format = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=270880269]
+color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[node name="Particles2D" type="GPUParticles2D" parent="." unique_id=845735923]
+z_index = 1
+position = Vector2(1054, 300)
+amount = 250
+lifetime = 10.0
+preprocess = 20.0
+randomness = 1.0
+process_material = SubResource("3")
+
+[node name="ShakeCamera2D" type="Camera2D" parent="." unique_id=393695777]
+position = Vector2(512, 300)
+script = ExtResource("4_hh6aw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2067159438]
+stream = ExtResource("5_k740c")
+volume_db = -20.0
+autoplay = true

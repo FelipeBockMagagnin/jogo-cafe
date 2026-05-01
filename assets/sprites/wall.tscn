@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cumop2aeh5raf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ulayo"]
+load_path = "res://.godot/imported/wall.png-a2b2dda47b1ed3651589e27171e28380.ctex"
+
+[sub_resource type="OccluderPolygon2D" id="1"]
+polygon = PackedVector2Array(-16.1457, -16, 16.1457, -16, 16.1457, 16, -16.1457, 16)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(32, 32)
+
+[node name="Node" type="Node" unique_id=214040971]
+
+[node name="wall" type="Sprite2D" parent="." unique_id=1104125581]
+texture = SubResource("CompressedTexture2D_ulayo")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="wall" unique_id=1881699129]
+scale = Vector2(0.990975, 1)
+occluder = SubResource("1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall" unique_id=362099855]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/StaticBody2D" unique_id=1182983482]
+visible = false
+shape = SubResource("2")
