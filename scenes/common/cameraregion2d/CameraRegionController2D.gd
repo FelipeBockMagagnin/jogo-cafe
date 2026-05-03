@@ -53,6 +53,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	add_to_group("CameraController")
 	if Engine.is_editor_hint():
 		return
 	assert(target_node, "Please assign a Node2D to target_node")

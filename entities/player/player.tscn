@@ -3,18 +3,20 @@
 [ext_resource type="Script" uid="uid://dkwmrxqxoh4f8" path="res://entities/player/player.gd" id="2"]
 [ext_resource type="Script" uid="uid://bmu7eam8na8qh" path="res://scenes/common/scripts/trail_fade.gd" id="2_g1dw6"]
 [ext_resource type="SpriteFrames" uid="uid://c3ixhnu256fxs" path="res://entities/player_old_backup/controller/sprites/sprite_frames.tres" id="2_rkbax"]
+[ext_resource type="AudioStream" uid="uid://cowmm6de0josl" path="res://entities/player/Sound/jump.wav" id="4_fkugw"]
+[ext_resource type="AudioStream" uid="uid://b4b81qq0vp1ay" path="res://entities/player/Sound/dash.wav" id="5_8fjmc"]
+[ext_resource type="AudioStream" uid="uid://u40npwp7g1sl" path="res://entities/player/Sound/die.wav" id="5_qiwj3"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
-radius = 7.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fjmc"]
+size = Vector2(15, 27)
 
 [node name="player" type="CharacterBody2D" unique_id=684589559]
 script = ExtResource("2")
 trail_script = ExtResource("2_g1dw6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=563798366]
-position = Vector2(-1, 0)
-shape = SubResource("CapsuleShape2D_rkbax")
+position = Vector2(-1.5, -0.1)
+shape = SubResource("RectangleShape2D_8fjmc")
 
 [node name="Rotatable" type="Node2D" parent="." unique_id=1577050011]
 
@@ -24,13 +26,23 @@ target_position = Vector2(1.0009592e-05, 11)
 collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rotatable" unique_id=1568233466]
+texture_filter = 1
 position = Vector2(1, 0)
 sprite_frames = ExtResource("2_rkbax")
-animation = &"wall_slide"
+animation = &"idle"
 
 [node name="trailTimer" type="Timer" parent="." unique_id=820344199]
 wait_time = 0.05
 autostart = true
+
+[node name="Dash_Sound" type="AudioStreamPlayer2D" parent="." unique_id=582673473]
+stream = ExtResource("5_8fjmc")
+
+[node name="Die_Sound" type="AudioStreamPlayer2D" parent="." unique_id=563628523]
+stream = ExtResource("5_qiwj3")
+
+[node name="Jump_Sound" type="AudioStreamPlayer2D" parent="." unique_id=1060029183]
+stream = ExtResource("4_fkugw")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="trailTimer" to="." method="_on_trailTimer_timeout"]

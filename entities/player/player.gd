@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum State { IDLE, RUN, JUMP, FALL, WALL_SLIDE, DASH }
+enum State {IDLE, RUN, JUMP, FALL, WALL_SLIDE, DASH}
 
 @export var ACCELERATION = 3000.0
 @export var MAX_SPEED = 150.0
@@ -15,6 +15,7 @@ enum State { IDLE, RUN, JUMP, FALL, WALL_SLIDE, DASH }
 @export var DASH_SPEED = 300.0
 @export var DASH_DURATION = 0.15
 @export var WALL_SLIDE_FACTOR = 0.4
+@export var DASH_SHAKE_TIME = 0.1
 
 var current_state = State.IDLE
 
@@ -31,7 +32,12 @@ var dash_direction = Vector2.ZERO
 @onready var anim = $Rotatable/AnimatedSprite2D
 @onready var wall_raycast = $Rotatable/RayCast2D
 
-@export var trail_script : GDScript =  null
+@onready var jump_sound: AudioStreamPlayer2D = $Jump_Sound
+@onready var dash_sound: AudioStreamPlayer2D = $Dash_Sound
+@onready var die_sound: AudioStreamPlayer2D = $Die_Sound
+
+
+@export var trail_script: GDScript = null
 
 func _on_ready() -> void:
 	add_to_group("Player")
@@ -103,16 +109,22 @@ func start_dash():
 	dash_direction = axis.normalized() if axis != Vector2.ZERO else Vector2(rotatable.scale.x, 0)
 	velocity = dash_direction * DASH_SPEED
 	Input.start_joy_vibration(0, 1, 1, 0.2)
+	var screenManagerNode: CameraRegionController2D = get_tree().get_first_node_in_group("CameraController")
+	dash_sound.play()
+	if screenManagerNode:
+		screenManagerNode.shake(DASH_SHAKE_TIME)
 
 func jump():
+	jump_sound.play()
 	velocity.y = JUMP_VELOCITY
 	coyote_timer = 0
 	jump_buffer_timer = 0
 
 func wall_jump():
+	jump_sound.play()
 	velocity.y = JUMP_VELOCITY
-	velocity.x = -WALL_JUMP_X * rotatable.scale.x
-	rotatable.scale.x = -rotatable.scale.x
+	velocity.x = - WALL_JUMP_X * rotatable.scale.x
+	rotatable.scale.x = - rotatable.scale.x
 	wall_jump_timer = WALL_JUMP_TIME
 	jump_buffer_timer = 0
 
@@ -144,9 +156,11 @@ func play_anim(anim_name: String):
 	if anim.sprite_frames and anim.sprite_frames.has_animation(anim_name) and anim.animation != anim_name:
 		anim.play(anim_name)
 
+func die(): 
+	die_sound.play()
+	return await die_sound.finished
 
-# --- ESTADOS DA MÁQUINA DE ESTADOS (FSM) ---
-
+# --- ESTADOS DA MÁQUINA DE ESTADOS ---
 func handle_idle(delta):
 	reset_dash_on_floor()
 	coyote_timer = MAX_COYOTE_TIME
@@ -242,7 +256,6 @@ func handle_dash(delta):
 		else:
 			current_state = State.FALL
 
-# Este método presumivelmente estava conectado a um nó Timer do projeto original
 func _on_trailTimer_timeout():
 	if current_state == State.DASH:
 		var trail_sprite = Sprite2D.new()

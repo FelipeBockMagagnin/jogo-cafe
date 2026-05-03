@@ -33,4 +33,5 @@ func wait_dir_change(desired_dir: int):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player_node:
+		await player_node.die()
 		get_tree().call_deferred("reload_current_scene")
