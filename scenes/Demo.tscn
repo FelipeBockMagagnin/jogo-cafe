@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c7j2ovnh0sd3d"]
 
-[ext_resource type="Texture2D" uid="uid://dacyc4ffkwtac" path="res://assets/sprites/bg.png" id="1_xwrrd"]
-[ext_resource type="PackedScene" path="res://player/player.tscn" id="2_o3s4h"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg.png" id="1_xwrrd"]
+[ext_resource type="PackedScene" uid="uid://d1jhwitmo6wk7" path="res://entities/player/player.tscn" id="2_o3s4h"]
 [ext_resource type="TileSet" path="res://assets/sprites/wall.tres" id="3_c04u1"]
-[ext_resource type="Script" uid="uid://che67cnl3qeys" path="res://assets/scripts/ShakeCamera2D.gd" id="4_hh6aw"]
-[ext_resource type="AudioStream" uid="uid://0c70y077fnjk" path="res://assets/sfx/sountrack.wav" id="5_k740c"]
+[ext_resource type="Script" uid="uid://che67cnl3qeys" path="res://scenes/common/scripts/ShakeCamera2D.gd" id="4_hh6aw"]
+[ext_resource type="AudioStream" path="res://assets/sfx/sountrack.wav" id="5_k740c"]
 
 [sub_resource type="Curve" id="1"]
 _limits = [-40.0, 40.0, 0.0, 1.0]
