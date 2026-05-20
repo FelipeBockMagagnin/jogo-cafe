@@ -22,6 +22,7 @@ GlobalScript="*uid://bn55ictebwuxv"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [global_group]

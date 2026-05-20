@@ -6,6 +6,7 @@ enum State {IDLE, RUN, JUMP, FALL, WALL_SLIDE, DASH}
 @export var MAX_SPEED = 150.0
 @export var LIMIT_SPEED_Y = 400.0
 @export var JUMP_VELOCITY = -400.0
+@export var BOUNCE_VELOCITY = -600.0
 @export var MIN_JUMP_VELOCITY = -400.0
 @export var MAX_COYOTE_TIME = 0.1
 @export var JUMP_BUFFER_TIME = 0.16
@@ -127,6 +128,15 @@ func wall_jump():
 	rotatable.scale.x = - rotatable.scale.x
 	wall_jump_timer = WALL_JUMP_TIME
 	jump_buffer_timer = 0
+
+func bounce(force: float = BOUNCE_VELOCITY):
+	if jump_sound:
+		jump_sound.play()
+	velocity.y = force
+	current_state = State.JUMP
+	coyote_timer = 0
+	jump_buffer_timer = 0
+
 
 func check_ground_jump():
 	if (is_on_floor() or coyote_timer > 0) and jump_buffer_timer > 0:

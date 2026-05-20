@@ -33,5 +33,9 @@ func wait_dir_change(desired_dir: int):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player_node:
-		await player_node.die()
-		get_tree().call_deferred("reload_current_scene")
+		if player_node.velocity.y >= 0 and player_node.global_position.y < global_position.y - 8.0:
+			player_node.bounce()
+			queue_free()
+		else:
+			await player_node.die()
+			get_tree().call_deferred("reload_current_scene")
